@@ -3,8 +3,8 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src",
-    "module": "CommonJS",
-    "moduleResolution": "bundler",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "customConditions": [
       "source"
     ],
@@ -16,8 +16,7 @@
     }
   },
   "include": [
-    "src",
-    "prisma.config.ts"
+    "src"
   ],
   "exclude": [
     "node_modules",

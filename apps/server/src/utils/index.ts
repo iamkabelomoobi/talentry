@@ -1,0 +1,1 @@
+export { getBetterAuthHeaders } from "./headers";
