@@ -4,10 +4,15 @@ import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@as-integrations/express4";
 
 import { resolvers, typeDefs } from "./graphql";
+import { createContext } from "@/context";
+import { connectDatabase, disconnectDatabase } from "@/prisma/client";
 
 async function bootstrap() {
+  await connectDatabase();
+
   const app = express();
   const httpServer = http.createServer(app);
+  const port = Number(process.env.PORT) || 4000;
 
   const server = new ApolloServer({
     typeDefs,
@@ -16,11 +21,34 @@ async function bootstrap() {
 
   await server.start();
 
-  app.use("/graphql", express.json(), expressMiddleware(server));
+  app.use(
+    "/graphql",
+    express.json(),
+    expressMiddleware(server, { context: createContext }),
+  );
 
-  httpServer.listen({ port: process.env.PORT || 4000 }, () => {
-    console.log("Server ready at http://localhost:4000/graphql");
+  const shutdown = async (signal: string) => {
+    console.info(`${signal} received, shutting down.`);
+    await disconnectDatabase();
+    httpServer.close(() => {
+      process.exit(0);
+    });
+  };
+
+  process.once("SIGINT", () => {
+    void shutdown("SIGINT");
+  });
+  process.once("SIGTERM", () => {
+    void shutdown("SIGTERM");
+  });
+
+  httpServer.listen({ port }, () => {
+    console.log(`Server ready at http://localhost:${port}/graphql`);
   });
 }
 
-bootstrap().catch(console.error);
+bootstrap().catch(async (error) => {
+  console.error("Failed to start server:", error);
+  await disconnectDatabase();
+  process.exit(1);
+});
