@@ -1,12 +1,6 @@
 import { gql } from "graphql-tag";
 import { userResolvers, userTypeDefs } from "./modules/user";
 
-const baseTypeDefs = gql`
-  type Query {
-    _empty: String
-  }
-`;
-
 type ResolverMap = Record<string, Record<string, unknown>>;
 
 const mergeResolvers = (resolverMaps: ResolverMap[]): ResolverMap =>
@@ -21,6 +15,6 @@ const mergeResolvers = (resolverMaps: ResolverMap[]): ResolverMap =>
     return merged;
   }, {});
 
-export const typeDefs = [baseTypeDefs, userTypeDefs];
+export const typeDefs = [userTypeDefs];
 
 export const resolvers = mergeResolvers([userResolvers]);

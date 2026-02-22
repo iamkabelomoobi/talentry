@@ -1,4 +1,4 @@
-import { auth } from "@/auth/auth";
+import { auth } from "@/modules/auth/auth";
 import { getBetterAuthHeaders } from "@/utils/headers";
 import { IncomingHttpHeaders } from "http";
 

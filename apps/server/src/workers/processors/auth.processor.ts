@@ -7,10 +7,10 @@ import {
   AuthPasswordResetPayload,
   AuthPasswordUpdatedPayload,
   AuthWelcomeEmailPayload,
-} from "@/auth/jobs";
+} from "@/modules/auth/jobs";
 import { registerQueueProcessor } from "@/infra/queue";
-import { authenticationTemplates } from "@/emails/templates";
-import { sendEmail } from "@/emails/send";
+import { authenticationTemplates } from "@/modules/email/templates";
+import { sendEmail } from "@/modules/email/send";
 
 const processPasswordResetOtp = async (
   payload: AuthPasswordResetOtpPayload,

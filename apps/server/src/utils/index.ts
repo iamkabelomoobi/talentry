@@ -1,1 +1,3 @@
-export { getBetterAuthHeaders } from "./headers";
+export * from "./headers";
+
+export * from "./errors";

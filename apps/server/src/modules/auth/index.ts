@@ -1,7 +1,7 @@
 export { auth } from "./auth";
 export { authMiddleware } from "./middleware";
-export { createRoleRecord, getSessionFromHeaders } from "./services";
-export type { AuthHookUser, Session } from "./services";
+export { createRoleRecord, getSessionFromHeaders } from "./auth.service";
+export type { AuthHookUser, Session } from "./auth.service";
 export {
   AUTH_PASSWORD_RESET_OTP_JOB,
   AUTH_PASSWORD_RESET_JOB,

@@ -5,7 +5,7 @@ import { expressMiddleware } from "@as-integrations/express4";
 import { createContext } from "@/app/context";
 import { config } from "@/infra/config";
 import { connectDatabase, disconnectDatabase } from "@/infra/prisma";
-import { authMiddleware } from "@/auth";
+import { authMiddleware } from "@/modules/auth";
 import { resolvers, typeDefs } from "@/graphql";
 import { logger } from "@/infra/logger";
 import ip from "ip";

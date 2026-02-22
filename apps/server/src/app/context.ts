@@ -1,18 +1,25 @@
-import { Request, Response } from "express";
+import { auth } from "@/modules/auth";
 import { prisma } from "@/infra/prisma";
-import { getSessionFromHeaders, Session } from "@/auth/services/session.service";
+import { getBetterAuthHeaders } from "@/utils/headers";
+import { Request, Response } from "express";
 
 export type Context = {
   prisma: typeof prisma;
-  session: Session | null;
+  session: Awaited<ReturnType<typeof auth.api.getSession>> | null;
+  headers: Headers;
 };
 
 export const createContext = async ({
   req,
+  res,
 }: {
   req: Request;
   res: Response;
-}): Promise<Context> => ({
-  prisma,
-  session: await getSessionFromHeaders(req.headers),
-});
+}): Promise<Context> => {
+  const headers = getBetterAuthHeaders(req.headers);
+  return {
+    prisma,
+    headers,
+    session: await auth.api.getSession({ headers }),
+  };
+};
