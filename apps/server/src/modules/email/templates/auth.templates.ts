@@ -1,6 +1,6 @@
 import Mailgen from "mailgen";
 import { config } from "@/infra/config";
-import { getMailgenInstance } from "@/emails/render";
+import { getMailgenInstance } from "@/modules/email/render";
 import {
   EmailPayload,
   EmailVerificationTemplateParams,

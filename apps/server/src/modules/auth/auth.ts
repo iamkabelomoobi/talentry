@@ -3,9 +3,9 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "@/infra/prisma";
 import { bearer } from "better-auth/plugins/bearer";
 import { UserRole } from "@/types";
-import { AuthHookUser, createRoleRecord } from "@/auth/services";
+import { AuthHookUser, createRoleRecord } from "@/modules/auth/auth.service";
 import { config } from "@/infra/config";
-import { authenticationTemplates, sendEmail } from "@/emails";
+import { authenticationTemplates, sendEmail } from "@/modules/email";
 import { logger } from "@/infra/logger";
 
 type AuthEmailUser = {
@@ -45,7 +45,7 @@ const getUserEmail = (user: AuthEmailUser): string | null => {
   return normalizedEmail.length > 0 ? normalizedEmail : null;
 };
 
-const getUserName = (user: AuthEmailUser): string => {
+export const getUserName = (user: AuthEmailUser): string => {
   if (typeof user.name !== "string") {
     return "there";
   }
@@ -172,6 +172,14 @@ export const auth = betterAuth({
     },
   },
 
+  session: {
+    cookieCache: {
+      enabled: true,
+    },
+  },
+  bearer: {
+    enabled: true,
+  },
   secret: config.auth.secret,
   url: config.auth.url,
   plugins: [bearer()],
