@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 70" width="260" height="70">
+  <!-- Blue diagonal bolt/slash - rounded caps -->
+  <line x1="28" y1="8" x2="38" y2="62" stroke="#1A56DB" stroke-width="13" stroke-linecap="round"/>
+  <!-- Yellow accent dot - top left -->
+  <circle cx="21" cy="16" r="9" fill="#F5A623"/>
+  <!-- Wordmark -->
+  <text
+    x="58"
+    y="51"
+    font-family="'Liberation Sans', 'Helvetica Neue', Arial, sans-serif"
+    font-size="42"
+    font-weight="700"
+    letter-spacing="-1"
+    fill="#1A56DB"
+  >talentry</text>
+</svg>
