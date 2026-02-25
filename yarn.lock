@@ -9689,7 +9689,7 @@ pretty-ms@^9.2.0:
 
 prisma@^7.4.1:
   version "7.4.1"
-  resolved "https://registry.npmjs.org/prisma/-/prisma-7.4.1.tgz"
+  resolved "https://registry.yarnpkg.com/prisma/-/prisma-7.4.1.tgz#966bf69e118d0b3a24c21006fb798ad72cca5a6a"
   integrity sha512-gDKOXwnPiMdB+uYMhMeN8jj4K7Cu3Q2wB/wUsITOoOk446HtVb8T9BZxFJ1Zop6alc89k6PMNdR2FZCpbXp/jw==
   dependencies:
     "@prisma/config" "7.4.1"
