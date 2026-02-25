@@ -9,13 +9,11 @@
     "start": "node dist/index.js",
     "start:workers": "node dist/workers/index.js",
     "lint": "eslint . --max-warnings 0",
-
     "prisma:format": "prisma format",
     "prisma:studio": "prisma studio",
     "prisma:reset": "prisma migrate reset --force",
     "prisma:migrate:deploy": "prisma migrate deploy",
     "prisma:generate": "prisma generate",
-
     "clean:build": "rm -rf dist",
     "clean": "rm -rf dist .turbo"
   },
@@ -35,6 +33,7 @@
     "mailgen": "^2.0.32",
     "nodemailer": "^8.0.1",
     "pg": "^8.18.0",
+    "prisma": "^7.4.1",
     "resend": "^6.9.2",
     "winston": "^3.19.0"
   },
